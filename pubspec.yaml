@@ -1,7 +1,8 @@
 name: vimeo_video_metadata
 description: "A lightweight Dart package to fetch Vimeo video metadata using the oEmbed API. Just provide a Vimeo URL or video ID and get title, author, thumbnail, and more."
 version: 0.0.1
-homepage:
+repository: https://github.com/Rohan-raftlabs/vimeo_video_metadata
+homepage: https://www.raftlabs.com/
 
 environment:
   sdk: ^3.8.1
