@@ -1,39 +1,66 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Vimeo API Dart Package
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A lightweight Dart package to fetch Vimeo video metadata using the official oEmbed API. Cleanly designed for easy use, extensibility, and testability.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+---
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## ✨ Features
 
-## Features
+- Get video metadata by URL or video ID.
+- Clean interface via `IVimeoApi`.
+- Uses Vimeo’s [oEmbed API](https://developer.vimeo.com/api/oembed).
+- Timeout support.
+- Simple to use via `createVimeoApi()` factory function.
+- Fully testable and mock-friendly.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+---
 
-## Getting started
+## 📦 Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the following to your `pubspec.yaml`:
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  vimeo_api: ^0.0.1 or latest
 ```
 
-## Additional information
+Then run:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+flutter pub get or  dart pub get
+
+Ensure that you have added internet permissions to your app in the `AndroidManifest.xml` file for Android .
+No need to add any permissions for iOS.
+
+```xml
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+
+---
+
+## 🚀 Usage
+
+```dart
+import 'package:vimeo_api/vimeo_api.dart';
+
+void main() async {
+  final api = createVimeoApi(timeoutInSeconds: 15);
+
+  final metadata = await api.getVideoMetaByUrl("https://vimeo.com/718338402");
+
+  if (metadata != null) {
+    print("Title: ${metadata.title}");
+    print("Author: ${metadata.authorName}");
+    print("Thumbnail: ${metadata.thumbnailUrl}");
+  } else {
+    print("Failed to fetch metadata.");
+  }
+}
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.Developed by [Rohan Kumar Panigrahi](https://www.linkedin.com/in/rohan-kumar-panigrahi-187a12193/) at [RaftLabs](https://www.raftlabs.com/).
